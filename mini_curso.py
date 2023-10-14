@@ -26,10 +26,11 @@ class Heroi(Item):
     def ataca(self,inimigo):
         print(Fore.BLUE +'%s atacou %s' % (self.nome,inimigo.nome))
 
-        time.sleep(1)
+        time.sleep(1) #da um tempo de 1 segundo para aparecer a proxima mensagem
 
-        inimigo.dano(self.ataque) # inimigo recebe o dano
-        inimigo.tem_Vida()
+        inimigo.dano(self.ataque) # inimigo recebe o dano.
+        time.sleep(1)
+        inimigo.tem_Vida() # Verifica se o inimigo sobrevivei após o ataque.
 
     def dano(self,dano):
         self.vida-= dano
@@ -37,7 +38,7 @@ class Heroi(Item):
     
     def tem_Vida(self):
         if self.vida <= 0:
-            print('%s foi eliminado' % (self.nome))
+            print(Fore.RED +'%s foi eliminado' % (self.nome))
             self.estaVivo = False
 
 
@@ -54,9 +55,9 @@ while((player1.estaVivo and player2.estaVivo) or (player1.estaVivo and player3.e
     if atacante == 1 and player1.estaVivo:
         vitima = randint(0,1)
         if vitima == 0 and player2.estaVivo:          
-            player1.ataca(player2)
-        else:
             player1.ataca(player3)
+        else:
+            player1.ataca(player2)
 
     elif atacante == 2 and player2.estaVivo :
         vitima = randint(0,1)
