@@ -1,5 +1,10 @@
 from random import randint
 import time
+import colorama
+from colorama import Fore
+
+colorama.init()
+
 
 class Item():
     def __init__(self,ataque = 10,vida = 100) -> None:        
@@ -19,7 +24,7 @@ class Heroi(Item):
         self.estaVivo = estaVivo
 
     def ataca(self,inimigo):
-        print('%s atacou %s' % (self.nome,inimigo.nome))
+        print(Fore.BLUE +'%s atacou %s' % (self.nome,inimigo.nome))
 
         time.sleep(1)
 
@@ -28,7 +33,7 @@ class Heroi(Item):
 
     def dano(self,dano):
         self.vida-= dano
-        print('%s recebeu %i de dano' % (self.nome, dano))
+        print(Fore.RED +'%s recebeu %i de dano' % (self.nome, dano))
     
     def tem_Vida(self):
         if self.vida <= 0:
@@ -71,4 +76,4 @@ while((player1.estaVivo and player2.estaVivo) or (player1.estaVivo and player3.e
 
 for jogador in jogadores: #Exibe o jogador vencedor
     if jogador.estaVivo:
-        print('O %s venceu' % jogador.nome)
+        print(Fore.GREEN + 'O %s venceu' % jogador.nome)
