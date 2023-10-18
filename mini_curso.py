@@ -26,7 +26,7 @@ class Heroi(Item):
     def ataca(self,inimigo):
         print(Fore.BLUE +'%s atacou %s' % (self.nome,inimigo.nome))
 
-        time.sleep(1) #da um tempo de 1 segundo para aparecer a proxima mensagem
+        time.sleep(1) #Espera um tempo de 1 segundo para aparecer a proxima mensagem
 
         inimigo.dano(self.ataque) # inimigo recebe o dano.
         time.sleep(1)
@@ -46,7 +46,7 @@ class Heroi(Item):
 
 jogadores = []
 
-while True:
+while True: #Adiciona a lista de players.
     player = input(Fore.GREEN + 'Digite o nome do Herói ou 0 para sair: ')
     if player != '0':
 
@@ -58,16 +58,16 @@ while True:
 
 
 
-while(len(jogadores) >=2):
+while(len(jogadores) >=2): #Enquanto lista de jogadores for maior ou igual a 2 a luta continua.
     atacante = random.choice(jogadores)
     inimigo = random.choice(jogadores)
 
     if atacante != inimigo:
-        atacante.ataca(inimigo)
+        atacante.ataca(inimigo) #Atacante chama o método ataca o inimigo.
     else:
-        while atacante == inimigo:
+        while atacante == inimigo: #Enquanto atacante for igual ao inimigo, escolha outra inimigo.
             inimigo = random.choice(jogadores)
-
+            atacante.ataca(inimigo)
     
     for jogador in jogadores: # remove da lista o Jogador Eliminado
         if not jogador.estaVivo:
