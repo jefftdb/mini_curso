@@ -62,16 +62,14 @@ while(len(jogadores) >=2): #Enquanto lista de jogadores for maior ou igual a 2 a
     atacante = random.choice(jogadores)
     inimigo = random.choice(jogadores)
 
-    if atacante != inimigo:
-        atacante.ataca(inimigo) #Atacante chama o método ataca o inimigo.
-    else:
-        while atacante == inimigo: #Enquanto atacante for igual ao inimigo, escolha outra inimigo.
-            inimigo = random.choice(jogadores)
-            atacante.ataca(inimigo)
+    while atacante == inimigo: #Enquanto atacante for igual ao inimigo, escolha outra inimigo.
+        inimigo = random.choice(jogadores)
+        
+    atacante.ataca(inimigo)
     
-    for jogador in jogadores: # remove da lista o Jogador Eliminado
-        if not jogador.estaVivo:
-            jogadores.remove(jogador)
+    if not inimigo.estaVivo:# remove da lista o Jogador Eliminado
+        
+        jogadores.remove(inimigo)
 
 
 for jogador in jogadores: #Exibe o jogador vencedor
